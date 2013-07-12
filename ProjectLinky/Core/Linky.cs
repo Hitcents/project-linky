@@ -32,7 +32,7 @@ namespace ProjectLinky
             if (configCallback != null)
                 configCallback(config);
 
-            string inputDirectory = Path.GetDirectoryName(options.InputFile);
+            string inputDirectory = Path.GetDirectoryName(Path.GetFullPath(options.InputFile));
 
             foreach (var project in config.Projects)
             {
@@ -51,6 +51,9 @@ namespace ProjectLinky
 
                 bool needsSave = false;
 
+                List<string> existing = new List<string>();
+
+                //Remove files from project that do not exist
                 foreach (XmlNode itemGroup in doc.DocumentElement.GetElementsByTagName("ItemGroup"))
                 {
                     foreach (XmlNode node in itemGroup)
@@ -64,14 +67,17 @@ namespace ProjectLinky
                         if (includeNode == null)
                             continue;
 
-                        //Remove files from project that don't exist
                         foreach (var rule in project.Rules)
                         {
                             string pattern = RegexFormat(rule.OutputPattern);
 
                             if (Regex.IsMatch(linkNode.InnerText, pattern))
                             {
-                                if (!File.Exists(includeNode.Value))
+                                if (File.Exists(includeNode.Value))
+                                {
+                                    existing.Add(includeNode.Value);
+                                }
+                                else
                                 {
                                     if (removeCallback != null)
                                         removeCallback(project, includeNode.Value);
@@ -85,8 +91,30 @@ namespace ProjectLinky
                                 }
                             }
                         }
+                    }
+                }
 
-                        //Add new files to project
+                //Add new files to project
+                foreach (var rule in project.Rules)
+                {
+                    foreach (var file in Directory.EnumerateFiles(inputDirectory, rule.InputPattern))
+                    {
+                        string relative = ToRelativePath(project.Path, file);
+
+                        if (!existing.Contains(relative))
+                        {
+                            var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+
+                            var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
+                            content.SetAttribute("Include", relative);
+                            itemGroup.AppendChild(content);
+
+                            var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);
+                            link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(file));
+                            content.AppendChild(link);
+
+                            doc.DocumentElement.AppendChild(itemGroup);
+                        }
                     }
                 }
 
@@ -118,7 +146,7 @@ namespace ProjectLinky
                 baseUri = new Uri(Path.GetFullPath(basePath));
             }
 
-            return baseUri.MakeRelativeUri(uri).LocalPath;
+            return baseUri.MakeRelativeUri(uri).ToString().Replace("/", "\\");
         }
     }
 }

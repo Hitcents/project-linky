@@ -90,7 +90,8 @@ namespace ProjectLinky.Tests
         [TestMethod,
             DeploymentItem("Data\\Android.csproj"),
             DeploymentItem("Data\\iOS.csproj"),
-            DeploymentItem("Data\\Images\\chuck.png", "Images")]
+            DeploymentItem("Data\\Images\\chuck.png", "Images"),
+            DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveiOS()
         {
             _options.InputFile = "test-linky.xml";
@@ -113,7 +114,8 @@ namespace ProjectLinky.Tests
         [TestMethod,
             DeploymentItem("Data\\Android.csproj"),
             DeploymentItem("Data\\iOS.csproj"),
-            DeploymentItem("Data\\Images\\chuck.png", "Images")]
+            DeploymentItem("Data\\Images\\chuck.png", "Images"),
+            DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveAndroid()
         {
             _options.InputFile = "test-linky.xml";

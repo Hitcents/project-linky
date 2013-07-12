@@ -62,4 +62,9 @@
       <Link>Assets\Images\chuck.png</Link>
     </AndroidAsset>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Images\nerd.png">
+      <Link>Assets\Images\nerd.png</Link>
+    </AndroidAsset>
+  </ItemGroup>
 </Project>

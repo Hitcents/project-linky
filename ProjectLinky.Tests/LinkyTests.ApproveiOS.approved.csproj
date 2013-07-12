@@ -118,4 +118,9 @@
       <Link>Content\Images\chuck.png</Link>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\nerd.png">
+      <Link>Content\Images\nerd.png</Link>
+    </Content>
+  </ItemGroup>
 </Project>
