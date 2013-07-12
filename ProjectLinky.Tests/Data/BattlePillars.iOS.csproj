@@ -1,0 +1,2362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07958BCE-7F33-4F8F-9A86-5102FF4632FB}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BattlePillars</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>BattlePillars</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>True</DebugSymbols>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG;IPHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>True</MtouchDebug>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <DefineConstants>IPHONE</DefineConstants>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <Optimize>False</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;IPHONE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchDebug>True</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CrashReportingApiKey />
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <IpaPackageName />
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchLink>None</MtouchLink>
+    <DebugSymbols>true</DebugSymbols>
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <IpaPackageName />
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <DefineConstants>IPHONE</DefineConstants>
+    <CrashReportingApiKey />
+    <OptimizePNGs>false</OptimizePNGs>
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <BuildIpa>True</BuildIpa>
+    <ConsolePause>False</ConsolePause>
+    <CodesignProvision>Automatic:InHouse</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <DefineConstants>IPHONE</DefineConstants>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <OptimizePNGs>false</OptimizePNGs>
+    <CrashReportingApiKey />
+    <IpaPackageName />
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <DefineConstants>IPHONE</DefineConstants>
+    <MtouchI18n />
+    <MtouchArch>ARMv7</MtouchArch>
+    <OptimizePNGs>false</OptimizePNGs>
+    <IpaPackageName />
+    <MtouchUseSGen>true</MtouchUseSGen>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+    <Reference Include="OpenTK" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="MonoTouch.FacebookConnect">
+      <HintPath>..\..\HitcentsGameEngine\Dependencies\Facebook\iOS\MonoTouch.FacebookConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="TestFlight">
+      <HintPath>..\..\HitcentsGameEngine\Dependencies\TestFlight\TestFlight.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="iOS\BattlepillarsGame.cs" />
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\BattlePillarsContentLoader.cs">
+      <Link>XNA\BattlePillarsContentLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\BattlepillarsGame.cs">
+      <Link>XNA\BattlepillarsGame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\BattleStats.cs">
+      <Link>XNA\BattleStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Constants.cs">
+      <Link>XNA\Constants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Enumerations.cs">
+      <Link>XNA\Enumerations.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Program.cs">
+      <Link>XNA\Program.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\SavegameManager.cs">
+      <Link>XNA\SavegameManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\AIGeneralProfile.cs">
+      <Link>XNA\General Profiles\AIGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\GardenGeneralProfile.cs">
+      <Link>XNA\General Profiles\GardenGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\JunkGeneralProfile.cs">
+      <Link>XNA\General Profiles\JunkGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\RobotGeneralProfile.cs">
+      <Link>XNA\General Profiles\RobotGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\SpookyGeneralProfile.cs">
+      <Link>XNA\General Profiles\SpookyGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\ArmyBattleProfile.cs">
+      <Link>XNA\Stats\ArmyBattleProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\SegmentStatManager.cs">
+      <Link>XNA\Stats\SegmentStatManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\SegmentStats.cs">
+      <Link>XNA\Stats\SegmentStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlepillarComponent.cs">
+      <Link>XNA\Components\BattlepillarComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\RecyclableElementComponent.cs">
+      <Link>XNA\Components\RecyclableElementComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UnitComponent.cs">
+      <Link>XNA\Components\UnitComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\HeadSegmentComponent.cs">
+      <Link>XNA\Components\Segments\HeadSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\SegmentComponent.cs">
+      <Link>XNA\Components\Segments\SegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\SegmentDamageSpriteComponent.cs">
+      <Link>XNA\Components\Segments\SegmentDamageSpriteComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\WeaponSegmentComponent.cs">
+      <Link>XNA\Components\Segments\WeaponSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\AIPillarBuilderComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\AIPillarBuilderComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BaseCityComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BaseCityComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BaseCityFrontComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BaseCityFrontComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BattlefieldGameState.cs">
+      <Link>XNA\Components\BattlefieldGameState\BattlefieldGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BattlefieldSetupConditions.cs">
+      <Link>XNA\Components\BattlefieldGameState\BattlefieldSetupConditions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\CameraControlComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\CameraControlComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\DeathSplatComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\DeathSplatComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\DeathSplatManager.cs">
+      <Link>XNA\Components\BattlefieldGameState\DeathSplatManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ExplosionComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\ExplosionComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ExplosionManager.cs">
+      <Link>XNA\Components\BattlefieldGameState\ExplosionManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LanesComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\LanesComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ProjectileComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\ProjectileComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ProjectileManager.cs">
+      <Link>XNA\Components\BattlefieldGameState\ProjectileManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\AppleCounterComponent.cs">
+      <Link>XNA\Components\AppleCounterComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\CarouselComponent.cs">
+      <Link>XNA\Components\CarouselComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\OngoingEffect.cs">
+      <Link>XNA\Components\BattlefieldGameState\OngoingEffect.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\SwarmComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\SwarmComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ZoneComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\ZoneComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ZoneManager.cs">
+      <Link>XNA\Components\BattlefieldGameState\ZoneManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\GrubSegmentComponent.cs">
+      <Link>XNA\Components\Segments\GrubSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\MedicSegmentComponent.cs">
+      <Link>XNA\Components\Segments\MedicSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\ProjectileSegmentComponent.cs">
+      <Link>XNA\Components\Segments\ProjectileSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\ZoneWeaponSegmentComponent.cs">
+      <Link>XNA\Components\Segments\ZoneWeaponSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\OngoingEffectStats.cs">
+      <Link>XNA\Stats\OngoingEffectStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\ZoneStats.cs">
+      <Link>XNA\Stats\ZoneStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentPreviewComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentPreviewComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSelectButtonComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSelectButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSelectCarousel.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSelectCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSelectGameState.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSelectGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSelectMenuComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSelectMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\StageButtonComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\StageButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\StageMenuComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\StageMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\StageSelectGameState.cs">
+      <Link>XNA\Components\StageSelectGameState\StageSelectGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StartGameState\StartGameState.cs">
+      <Link>XNA\Components\StartGameState\StartGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StartGameState\StartMenuComponent.cs">
+      <Link>XNA\Components\StartGameState\StartMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeMenuComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeMenuGameState.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeMenuGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeMenuTabComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeMenuTabComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeSegmentButtonComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeSegmentButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeSegmentCarousel.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeSegmentCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\SegmentStateComponent.cs">
+      <Link>XNA\Components\Segments\SegmentStateComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlepillarStateComponent.cs">
+      <Link>XNA\BattlepillarStateComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\TestRangeGameState\TestRangeGameState.cs">
+      <Link>XNA\Components\BattlefieldGameState\TestRangeGameState\TestRangeGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestMenuComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestRangeSegmentCarousel.cs">
+      <Link>XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestRangeSegmentCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestSegmentButtonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\TestRangeGameState\UI\TestSegmentButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\LaunchButtonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\LaunchButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\LeafCounterComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\LeafCounterComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\PauseMenuComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\PauseMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ProductionUpgradeButton.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ProductionUpgradeButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\SegmentButtonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\SegmentButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\PlayerVsAIGameState.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\PlayerVsAIGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\TeamProfile.cs">
+      <Link>XNA\TeamProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\General Profiles\JungleGeneralProfile.cs">
+      <Link>XNA\General Profiles\JungleGeneralProfile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PillarBuilderComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PillarBuilderComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PillarBuilderSegmentComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PillarBuilderSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\VictoryDefeatMenuComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\VictoryDefeatMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\PopUpComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\PopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\ProgressBar.cs">
+      <Link>XNA\ProgressBar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\ApplesPopUpComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\ApplesPopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSlotPopUpComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSlotPopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SplashScreenGameState\SplashScreenState.cs">
+      <Link>XNA\Components\SplashScreenGameState\SplashScreenState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BackgroundElementComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BackgroundElementComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BackgroundSpriteComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BackgroundSpriteComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Segments\MinesSegmentComponent.cs">
+      <Link>XNA\Components\Segments\MinesSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\MineComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\MineComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BattlefieldToolTipComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BattlefieldToolTipComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\StageMapComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\StageMapComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\MinimapComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\MinimapComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LeafChallengeGameState\LeafChallengeGameState.cs">
+      <Link>XNA\Components\BattlefieldGameState\LeafChallengeGameState\LeafChallengeGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableButtonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableBuyApplesButtonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableBuyApplesButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableBuyButton.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableBuyButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableDropDownComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendableDropDownComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendablePopUpComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\ExpendablePopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PooperComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PooperComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\BattlepillarsCamera.cs">
+      <Link>XNA\BattlepillarsCamera.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LeafProductionComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\LeafProductionComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\TestPurchaseService.cs">
+      <Link>XNA\TestPurchaseService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BaseCityGunComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BaseCityGunComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\WizardTurtleComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\WizardTurtleComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\CollectibleAppleComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\CollectibleAppleComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\CollectibleComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\CollectibleComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\CollectibleLeafComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\CollectibleLeafComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\CollectibleManager.cs">
+      <Link>XNA\Components\BattlefieldGameState\CollectibleManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeAppleButtonComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeAppleButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeAppleCarousel.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeAppleCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeBaseButtonComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeBaseButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeBaseCarousel.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeBaseCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeBuyApplesPopUp.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeBuyApplesPopUp.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeExpendableButtonComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeExpendableButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeExpendableCarousel.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeExpendableCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LeafRainerComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\LeafRainerComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentSelectToolTipComponent.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentSelectToolTipComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BirdComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\BirdComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LeafSquirrelComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\LeafSquirrelComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\ZonePoopComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\ZonePoopComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeSkinButtonComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeSkinButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\UpgradeSkinCarousel.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\UpgradeSkinCarousel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\BossComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\BossComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\NewSkinPopupComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\NewSkinPopupComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\GlitchSpriteComponent.cs">
+      <Link>XNA\Components\GlitchSpriteComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SegmentSelectGameState\SegmentPreviewAnim.cs">
+      <Link>XNA\Components\SegmentSelectGameState\SegmentPreviewAnim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\CollectibleAppleAnim.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\CollectibleAppleAnim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\CollectibleLeafAnim.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\CollectibleLeafAnim.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\FloaterTextComponent.cs">
+      <Link>XNA\Components\FloaterTextComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\RainComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\RainComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\RainerComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\RainerComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\TipBalloonComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\TipBalloonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\GardenBossComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\GardenBossComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StartGameState\LogonPopupComponent.cs">
+      <Link>XNA\Components\StartGameState\LogonPopupComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\DebugMenuGameState\DebugMenuComponent.cs">
+      <Link>XNA\Components\DebugMenuGameState\DebugMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\DebugMenuGameState\DebugMenuGameState.cs">
+      <Link>XNA\Components\DebugMenuGameState\DebugMenuGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\JungleBossComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\JungleBossComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\ProjectileStats.cs">
+      <Link>XNA\Stats\ProjectileStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\ExplosionStats.cs">
+      <Link>XNA\Stats\ExplosionStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\BonusChallengePopUpComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\BonusChallengePopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\FirstChallengePopupComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\FirstChallengePopupComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Stats\SkinStats.cs">
+      <Link>XNA\Stats\SkinStats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\LevelPreviewComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\LevelPreviewComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\MapChallengePopUpComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\MapChallengePopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StageSelectGameState\NavigationButtonComponent.cs">
+      <Link>XNA\Components\StageSelectGameState\NavigationButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\LightningComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\LightningComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\BattleMenuComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\BattleMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\SpookyBossComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\SpookyBossComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\ModeSelectGameState\ModeSelectButtonComponent.cs">
+      <Link>XNA\Components\ModeSelectGameState\ModeSelectButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\ModeSelectGameState\ModeSelectGameState.cs">
+      <Link>XNA\Components\ModeSelectGameState\ModeSelectGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\ModeSelectGameState\ModeSelectMenuComponent.cs">
+      <Link>XNA\Components\ModeSelectGameState\ModeSelectMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\EndlessGameState\EndlessGameState.cs">
+      <Link>XNA\Components\BattlefieldGameState\EndlessGameState\EndlessGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\InfantryUnitComponent.cs">
+      <Link>XNA\Components\InfantryUnitComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\SpiderComponent.cs">
+      <Link>XNA\Components\SpiderComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\EndlessGameState\EndlessBaseCityComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\EndlessGameState\EndlessBaseCityComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\EndlessGameState\EndlessPillarBuilderComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\EndlessGameState\EndlessPillarBuilderComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\PlayerVsAIGameState\JunkBossComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\PlayerVsAIGameState\JunkBossComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\MultiplayerSetupGameState.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\MultiplayerSetupGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupBarComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupBarComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupGameMenuOptions.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupGameMenuOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupBarButtonComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupBarButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupEnvironmentRowButtonComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupEnvironmentRowButtonComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupEnvironmentRowComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupEnvironmentRowComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupGameMenuComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupGameMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupSliderComponent.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\SetupSliderComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\MultiplayerGameState.cs">
+      <Link>XNA\Components\Multiplayer\MultiplayerGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\GameLobbyGameState\UI\GameLobbyGameButton.cs">
+      <Link>XNA\Components\Multiplayer\GameLobbyGameState\UI\GameLobbyGameButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\GameLobbyGameState\UI\GameLobbyMenuComponent.cs">
+      <Link>XNA\Components\Multiplayer\GameLobbyGameState\UI\GameLobbyMenuComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\Multiplayer\GameLobbyGameState\GameLobbyGameState.cs">
+      <Link>XNA\Components\Multiplayer\GameLobbyGameState\GameLobbyGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\BattlefieldGameState\MagmaBallComponent.cs">
+      <Link>XNA\Components\BattlefieldGameState\MagmaBallComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\StartGameState\DailyRewardPopUpComponent.cs">
+      <Link>XNA\Components\StartGameState\DailyRewardPopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\DetailsPreviewBattlepillarComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\DetailsPreviewBattlepillarComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\DetailsPreviewSegmentComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\DetailsPreviewSegmentComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\UpgradeMenuGameState\SegmentDetailsPopUpComponent.cs">
+      <Link>XNA\Components\UpgradeMenuGameState\SegmentDetailsPopUpComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\CreditsGameState\CreditsBackgroundParallaxComponent.cs">
+      <Link>XNA\Components\CreditsGameState\CreditsBackgroundParallaxComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\Components\CreditsGameState\CreditsGameState.cs">
+      <Link>XNA\Components\CreditsGameState\CreditsGameState.cs</Link>
+    </Compile>
+    <Compile Include="..\..\BattlePillars.XNA\BattlePillars.XNA\BattlepillarsMultiplayerService.cs">
+      <Link>XNA\BattlepillarsMultiplayerService.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="XNA\" />
+    <Folder Include="Content\" />
+    <Folder Include="iOS\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Binary\" />
+    <Folder Include="XNA\Components\" />
+    <Folder Include="XNA\Stats\" />
+    <Folder Include="XNA\General Profiles\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\" />
+    <Folder Include="XNA\Components\Segments\" />
+    <Folder Include="Content\Fonts\" />
+    <Folder Include="XNA\Components\SegmentSelectGameState\" />
+    <Folder Include="XNA\Components\StageSelectGameState\" />
+    <Folder Include="XNA\Components\UpgradeMenuGameState\" />
+    <Folder Include="XNA\Components\StartGameState\" />
+    <Folder Include="Content\Sounds\" />
+    <Folder Include="Content\Music\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\PlayerVsAIGameState\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\PlayerVsAIGameState\UI\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\TestRangeGameState\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\TestRangeGameState\UI\" />
+    <Folder Include="XNA\Components\SplashScreenGameState\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\LeafChallengeGameState\" />
+    <Folder Include="XNA\Components\DebugMenuGameState\" />
+    <Folder Include="XNA\Components\ModeSelectGameState\" />
+    <Folder Include="XNA\Components\BattlefieldGameState\EndlessGameState\" />
+    <Folder Include="XNA\Components\Multiplayer\" />
+    <Folder Include="XNA\Components\Multiplayer\MultiplayerSetupGameState\" />
+    <Folder Include="XNA\Components\Multiplayer\MultiplayerSetupGameState\UI\" />
+    <Folder Include="XNA\Components\Multiplayer\GameLobbyGameState\" />
+    <Folder Include="XNA\Components\Multiplayer\GameLobbyGameState\UI\" />
+    <Folder Include="XNA\Components\CreditsGameState\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\HitcentsGameEngine\iOS\Blendgine.Core\Blendgine.Core.csproj">
+      <Project>{39397D6F-01B3-41A4-95AA-05D83C197ED0}</Project>
+      <Name>Blendgine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HitcentsGameEngine\iOS\Blendgine.XNA\Blendgine.XNA.csproj">
+      <Project>{C9AE2BE3-C791-492A-ADF7-957FCF142056}</Project>
+      <Name>Blendgine.XNA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HitcentsGameEngine\Dependencies\MonoGame-Source\ThirdParty\Lidgren.Network\Lidgren.Network.iOS.csproj">
+      <Project>{734EAA48-F1CA-481A-B391-0285BC0E8B40}</Project>
+      <Name>Lidgren.Network.iOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\HitcentsGameEngine\Dependencies\MonoGame-Source\MonoGame.Framework\MonoGame.Framework.iOS.csproj">
+      <Project>{DB8508BB-9849-4CC2-BC0F-8EB5DACB3C47}</Project>
+      <Name>MonoGame.Framework.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_background1.png">
+      <Link>Content\Images\battlepillars_large_background1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_background2.png">
+      <Link>Content\Images\battlepillars_large_background2.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_basic1.png">
+      <Link>Content\Images\battlepillars_large_basic1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_button1.png">
+      <Link>Content\Images\battlepillars_large_button1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_button2.png">
+      <Link>Content\Images\battlepillars_large_button2.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_logo1.png">
+      <Link>Content\Images\battlepillars_large_logo1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_map1.png">
+      <Link>Content\Images\battlepillars_large_map1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_menu1.png">
+      <Link>Content\Images\battlepillars_large_menu1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_medium1.png">
+      <Link>Content\Images\battlepillars_medium1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_medium2.png">
+      <Link>Content\Images\battlepillars_medium2.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_small1.png">
+      <Link>Content\Images\battlepillars_small1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_boss1.png">
+      <Link>Content\Images\battlepillars_large_boss1.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_button3.png">
+      <Link>Content\Images\battlepillars_large_button3.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\Helsinki_9.xnb">
+      <Link>Content\Fonts\Helsinki_9.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\Helsinki_18.xnb">
+      <Link>Content\Fonts\Helsinki_18.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\Helsinki_36.xnb">
+      <Link>Content\Fonts\Helsinki_36.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\Helsinki_72.xnb">
+      <Link>Content\Fonts\Helsinki_72.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\Helsinki_144.xnb">
+      <Link>Content\Fonts\Helsinki_144.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass1_large.xnb">
+      <Link>Content\Images\tiled_background_garden_grass1_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass1_small.xnb">
+      <Link>Content\Images\tiled_background_garden_grass1_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass1.xnb">
+      <Link>Content\Images\tiled_background_garden_grass1.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass2_large.xnb">
+      <Link>Content\Images\tiled_background_garden_grass2_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass2_small.xnb">
+      <Link>Content\Images\tiled_background_garden_grass2_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_grass2.xnb">
+      <Link>Content\Images\tiled_background_garden_grass2.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_ground_large.xnb">
+      <Link>Content\Images\tiled_background_garden_ground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_ground_small.xnb">
+      <Link>Content\Images\tiled_background_garden_ground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_ground.xnb">
+      <Link>Content\Images\tiled_background_garden_ground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_sky_large.xnb">
+      <Link>Content\Images\tiled_background_garden_sky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_sky_small.xnb">
+      <Link>Content\Images\tiled_background_garden_sky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_garden_sky.xnb">
+      <Link>Content\Images\tiled_background_garden_sky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_bamboo_large.xnb">
+      <Link>Content\Images\tiled_background_jungle_bamboo_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_bamboo_small.xnb">
+      <Link>Content\Images\tiled_background_jungle_bamboo_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_bamboo.xnb">
+      <Link>Content\Images\tiled_background_jungle_bamboo.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass1_large.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass1_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass1_small.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass1_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass1.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass1.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass2_large.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass2_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass2_small.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass2_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_grass2.xnb">
+      <Link>Content\Images\tiled_background_jungle_grass2.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_ground_large.xnb">
+      <Link>Content\Images\tiled_background_jungle_ground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_ground_small.xnb">
+      <Link>Content\Images\tiled_background_jungle_ground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_ground.xnb">
+      <Link>Content\Images\tiled_background_jungle_ground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_sky_large.xnb">
+      <Link>Content\Images\tiled_background_jungle_sky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_sky_small.xnb">
+      <Link>Content\Images\tiled_background_jungle_sky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_jungle_sky.xnb">
+      <Link>Content\Images\tiled_background_jungle_sky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass1_large.xnb">
+      <Link>Content\Images\tiled_background_junk_grass1_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass1_small.xnb">
+      <Link>Content\Images\tiled_background_junk_grass1_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass1.xnb">
+      <Link>Content\Images\tiled_background_junk_grass1.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass2_large.xnb">
+      <Link>Content\Images\tiled_background_junk_grass2_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass2_small.xnb">
+      <Link>Content\Images\tiled_background_junk_grass2_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_grass2.xnb">
+      <Link>Content\Images\tiled_background_junk_grass2.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_ground_large.xnb">
+      <Link>Content\Images\tiled_background_junk_ground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_ground_small.xnb">
+      <Link>Content\Images\tiled_background_junk_ground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_ground.xnb">
+      <Link>Content\Images\tiled_background_junk_ground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_sky_large.xnb">
+      <Link>Content\Images\tiled_background_junk_sky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_sky_small.xnb">
+      <Link>Content\Images\tiled_background_junk_sky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_junk_sky.xnb">
+      <Link>Content\Images\tiled_background_junk_sky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass1_large.xnb">
+      <Link>Content\Images\tiled_background_robot_grass1_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass1_small.xnb">
+      <Link>Content\Images\tiled_background_robot_grass1_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass1.xnb">
+      <Link>Content\Images\tiled_background_robot_grass1.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass2_large.xnb">
+      <Link>Content\Images\tiled_background_robot_grass2_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass2_small.xnb">
+      <Link>Content\Images\tiled_background_robot_grass2_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_grass2.xnb">
+      <Link>Content\Images\tiled_background_robot_grass2.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_ground_large.xnb">
+      <Link>Content\Images\tiled_background_robot_ground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_ground_small.xnb">
+      <Link>Content\Images\tiled_background_robot_ground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_ground.xnb">
+      <Link>Content\Images\tiled_background_robot_ground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_sky_large.xnb">
+      <Link>Content\Images\tiled_background_robot_sky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_sky_small.xnb">
+      <Link>Content\Images\tiled_background_robot_sky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_robot_sky.xnb">
+      <Link>Content\Images\tiled_background_robot_sky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_fog_large.xnb">
+      <Link>Content\Images\tiled_background_spooky_fog_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_fog_small.xnb">
+      <Link>Content\Images\tiled_background_spooky_fog_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_fog.xnb">
+      <Link>Content\Images\tiled_background_spooky_fog.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass1_large.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass1_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass1_small.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass1_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass1.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass1.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass2_large.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass2_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass2_small.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass2_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_grass2.xnb">
+      <Link>Content\Images\tiled_background_spooky_grass2.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_ground_large.xnb">
+      <Link>Content\Images\tiled_background_spooky_ground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_ground_small.xnb">
+      <Link>Content\Images\tiled_background_spooky_ground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_ground.xnb">
+      <Link>Content\Images\tiled_background_spooky_ground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_sky_large.xnb">
+      <Link>Content\Images\tiled_background_spooky_sky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_sky_small.xnb">
+      <Link>Content\Images\tiled_background_spooky_sky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_background_spooky_sky.xnb">
+      <Link>Content\Images\tiled_background_spooky_sky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_bluegradient_large.xnb">
+      <Link>Content\Images\tiled_bluegradient_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_bluegradient_small.xnb">
+      <Link>Content\Images\tiled_bluegradient_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_bluegradient.xnb">
+      <Link>Content\Images\tiled_bluegradient.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_map_edge_large.xnb">
+      <Link>Content\Images\tiled_map_edge_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_map_edge_small.xnb">
+      <Link>Content\Images\tiled_map_edge_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_map_edge.xnb">
+      <Link>Content\Images\tiled_map_edge.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapfill_large.xnb">
+      <Link>Content\Images\tiled_mapfill_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapfill_small.xnb">
+      <Link>Content\Images\tiled_mapfill_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapfill.xnb">
+      <Link>Content\Images\tiled_mapfill.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapshading_large.xnb">
+      <Link>Content\Images\tiled_mapshading_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapshading_small.xnb">
+      <Link>Content\Images\tiled_mapshading_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_mapshading.xnb">
+      <Link>Content\Images\tiled_mapshading.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_background_large.xnb">
+      <Link>Content\Images\tiled_menu_background_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_background_small.xnb">
+      <Link>Content\Images\tiled_menu_background_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_background.xnb">
+      <Link>Content\Images\tiled_menu_background.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_expendablebar_large.xnb">
+      <Link>Content\Images\tiled_menu_expendablebar_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_expendablebar_small.xnb">
+      <Link>Content\Images\tiled_menu_expendablebar_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_expendablebar.xnb">
+      <Link>Content\Images\tiled_menu_expendablebar.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimap_large.xnb">
+      <Link>Content\Images\tiled_minimap_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimap_small.xnb">
+      <Link>Content\Images\tiled_minimap_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimap.xnb">
+      <Link>Content\Images\tiled_minimap.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapline_large.xnb">
+      <Link>Content\Images\tiled_minimapline_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapline_small.xnb">
+      <Link>Content\Images\tiled_minimapline_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapline.xnb">
+      <Link>Content\Images\tiled_minimapline.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapsky_large.xnb">
+      <Link>Content\Images\tiled_minimapsky_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapsky_small.xnb">
+      <Link>Content\Images\tiled_minimapsky_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_minimapsky.xnb">
+      <Link>Content\Images\tiled_minimapsky.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_popup_large.xnb">
+      <Link>Content\Images\tiled_popup_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_popup_small.xnb">
+      <Link>Content\Images\tiled_popup_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_popup.xnb">
+      <Link>Content\Images\tiled_popup.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_titlebackground_large.xnb">
+      <Link>Content\Images\tiled_titlebackground_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_titlebackground_small.xnb">
+      <Link>Content\Images\tiled_titlebackground_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_titlebackground.xnb">
+      <Link>Content\Images\tiled_titlebackground.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\HelsinkiBordered_9.xnb">
+      <Link>Content\Fonts\HelsinkiBordered_9.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\HelsinkiBordered_18.xnb">
+      <Link>Content\Fonts\HelsinkiBordered_18.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\HelsinkiBordered_36.xnb">
+      <Link>Content\Fonts\HelsinkiBordered_36.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\HelsinkiBordered_72.xnb">
+      <Link>Content\Fonts\HelsinkiBordered_72.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Fonts\HelsinkiBordered_144.xnb">
+      <Link>Content\Fonts\HelsinkiBordered_144.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\battlepillarstheme.mp3">
+      <Link>Content\Music\battlepillarstheme.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\battlepillars1.mp3">
+      <Link>Content\Music\battlepillars1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\bosspillar1.mp3">
+      <Link>Content\Music\bosspillar1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\menu.mp3">
+      <Link>Content\Music\menu.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\junglepillar1.mp3">
+      <Link>Content\Music\junglepillar1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\spookypillar1.mp3">
+      <Link>Content\Music\spookypillar1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_medium3.png">
+      <Link>Content\Images\battlepillars_medium3.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Music\robotpillar1.mp3">
+      <Link>Content\Music\robotpillar1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_back_large.xnb">
+      <Link>Content\Images\tiled_victory_back_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_back_small.xnb">
+      <Link>Content\Images\tiled_victory_back_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_back.xnb">
+      <Link>Content\Images\tiled_victory_back.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_side_large.xnb">
+      <Link>Content\Images\tiled_victory_side_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_side_small.xnb">
+      <Link>Content\Images\tiled_victory_side_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_victory_side.xnb">
+      <Link>Content\Images\tiled_victory_side.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\drumroll.mp3">
+      <Link>Content\Sounds\drumroll.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\magmalaunch.mp3">
+      <Link>Content\Sounds\magmalaunch.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hatch.mp3">
+      <Link>Content\Sounds\hatch.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\patter.mp3">
+      <Link>Content\Sounds\patter.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\zap.mp3">
+      <Link>Content\Sounds\zap.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\thunderroll.mp3">
+      <Link>Content\Sounds\thunderroll.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\thunder.mp3">
+      <Link>Content\Sounds\thunder.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\toxichoneycharge.mp3">
+      <Link>Content\Sounds\toxichoneycharge.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\vurmp.mp3">
+      <Link>Content\Sounds\vurmp.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\bossbite.mp3">
+      <Link>Content\Sounds\bossbite.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\spikestormlaunch.mp3">
+      <Link>Content\Sounds\spikestormlaunch.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\toxichoneyland.mp3">
+      <Link>Content\Sounds\toxichoneyland.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\toxichoneyshoot.mp3">
+      <Link>Content\Sounds\toxichoneyshoot.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\rain.mp3">
+      <Link>Content\Sounds\rain.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\bigcannon.mp3">
+      <Link>Content\Sounds\bigcannon.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\bossgardendie.mp3">
+      <Link>Content\Sounds\bossgardendie.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\roar.mp3">
+      <Link>Content\Sounds\roar.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdderp.mp3">
+      <Link>Content\Sounds\birdderp.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdfartrise1.mp3">
+      <Link>Content\Sounds\birdfartrise1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdfartrise2.mp3">
+      <Link>Content\Sounds\birdfartrise2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdfartrise3.mp3">
+      <Link>Content\Sounds\birdfartrise3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdfartstart1.mp3">
+      <Link>Content\Sounds\birdfartstart1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdfartstart2.mp3">
+      <Link>Content\Sounds\birdfartstart2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdplop1.mp3">
+      <Link>Content\Sounds\birdplop1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdplop2.mp3">
+      <Link>Content\Sounds\birdplop2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdplop3.mp3">
+      <Link>Content\Sounds\birdplop3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdplop4.mp3">
+      <Link>Content\Sounds\birdplop4.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\birdwhistle.mp3">
+      <Link>Content\Sounds\birdwhistle.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\healing.mp3">
+      <Link>Content\Sounds\healing.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\sparkle.mp3">
+      <Link>Content\Sounds\sparkle.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\sparkleslowdown.mp3">
+      <Link>Content\Sounds\sparkleslowdown.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\spendleaves2.mp3">
+      <Link>Content\Sounds\spendleaves2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\squirrel1.mp3">
+      <Link>Content\Sounds\squirrel1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtle1.mp3">
+      <Link>Content\Sounds\turtle1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtle2.mp3">
+      <Link>Content\Sounds\turtle2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtle3.mp3">
+      <Link>Content\Sounds\turtle3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtle4.mp3">
+      <Link>Content\Sounds\turtle4.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtleslow1.mp3">
+      <Link>Content\Sounds\turtleslow1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\turtleslow2.mp3">
+      <Link>Content\Sounds\turtleslow2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\burrdrop.mp3">
+      <Link>Content\Sounds\burrdrop.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\flamethrower.mp3">
+      <Link>Content\Sounds\flamethrower.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\airblow1.mp3">
+      <Link>Content\Sounds\airblow1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\airblow2.mp3">
+      <Link>Content\Sounds\airblow2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hairdryer.mp3">
+      <Link>Content\Sounds\hairdryer.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\missilelauncher.mp3">
+      <Link>Content\Sounds\missilelauncher.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\equiparmor.mp3">
+      <Link>Content\Sounds\equiparmor.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\equipgun.mp3">
+      <Link>Content\Sounds\equipgun.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\fire1.mp3">
+      <Link>Content\Sounds\fire1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\fire2.mp3">
+      <Link>Content\Sounds\fire2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\fire3.mp3">
+      <Link>Content\Sounds\fire3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\fire4.mp3">
+      <Link>Content\Sounds\fire4.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hurt1.mp3">
+      <Link>Content\Sounds\hurt1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hurt2.mp3">
+      <Link>Content\Sounds\hurt2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hurt3.mp3">
+      <Link>Content\Sounds\hurt3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\hurt4.mp3">
+      <Link>Content\Sounds\hurt4.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\trash.mp3">
+      <Link>Content\Sounds\trash.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\unlock.mp3">
+      <Link>Content\Sounds\unlock.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\applecounter.mp3">
+      <Link>Content\Sounds\applecounter.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\applepurchase.mp3">
+      <Link>Content\Sounds\applepurchase.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\baseexplode.mp3">
+      <Link>Content\Sounds\baseexplode.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\buzzing.mp3">
+      <Link>Content\Sounds\buzzing.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\chewattack.mp3">
+      <Link>Content\Sounds\chewattack.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\click1.mp3">
+      <Link>Content\Sounds\click1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\click2.mp3">
+      <Link>Content\Sounds\click2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\clickback.mp3">
+      <Link>Content\Sounds\clickback.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\clickerror.mp3">
+      <Link>Content\Sounds\clickerror.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\clickmain.mp3">
+      <Link>Content\Sounds\clickmain.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\errorbuzz.mp3">
+      <Link>Content\Sounds\errorbuzz.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\fireburn.mp3">
+      <Link>Content\Sounds\fireburn.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\grenadetoss.mp3">
+      <Link>Content\Sounds\grenadetoss.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\grubburst.mp3">
+      <Link>Content\Sounds\grubburst.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\gunreload.mp3">
+      <Link>Content\Sounds\gunreload.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\honeycannon.mp3">
+      <Link>Content\Sounds\honeycannon.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\honeysplat.mp3">
+      <Link>Content\Sounds\honeysplat.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\spendleaves.mp3">
+      <Link>Content\Sounds\spendleaves.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\defeat.mp3">
+      <Link>Content\Sounds\defeat.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\chaingun1.mp3">
+      <Link>Content\Sounds\chaingun1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\chaingun2.mp3">
+      <Link>Content\Sounds\chaingun2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\chaingun3.mp3">
+      <Link>Content\Sounds\chaingun3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\laser.mp3">
+      <Link>Content\Sounds\laser.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\pop1.mp3">
+      <Link>Content\Sounds\pop1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\pop2.mp3">
+      <Link>Content\Sounds\pop2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\pop3.mp3">
+      <Link>Content\Sounds\pop3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\victory.mp3">
+      <Link>Content\Sounds\victory.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\cannon.mp3">
+      <Link>Content\Sounds\cannon.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\explosion.mp3">
+      <Link>Content\Sounds\explosion.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\throw1.mp3">
+      <Link>Content\Sounds\throw1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\gun1.mp3">
+      <Link>Content\Sounds\gun1.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\gun2.mp3">
+      <Link>Content\Sounds\gun2.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\gun3.mp3">
+      <Link>Content\Sounds\gun3.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Sounds\gun4.mp3">
+      <Link>Content\Sounds\gun4.mp3</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_button_creategame_middle_large.xnb">
+      <Link>Content\Images\tiled_button_creategame_middle_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_button_creategame_middle_small.xnb">
+      <Link>Content\Images\tiled_button_creategame_middle_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_button_creategame_middle.xnb">
+      <Link>Content\Images\tiled_button_creategame_middle.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorybackmiddle_large.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorybackmiddle_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorybackmiddle_small.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorybackmiddle_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorybackmiddle.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorybackmiddle.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorysidemiddle_large.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorysidemiddle_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorysidemiddle_small.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorysidemiddle_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_multiplayer_victorysidemiddle.xnb">
+      <Link>Content\Images\tiled_multiplayer_victorysidemiddle.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_selectgame_nameareamiddle_large.xnb">
+      <Link>Content\Images\tiled_selectgame_nameareamiddle_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_selectgame_nameareamiddle_small.xnb">
+      <Link>Content\Images\tiled_selectgame_nameareamiddle_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_selectgame_nameareamiddle.xnb">
+      <Link>Content\Images\tiled_selectgame_nameareamiddle.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_white_large.xnb">
+      <Link>Content\Images\tiled_white_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_white_small.xnb">
+      <Link>Content\Images\tiled_white_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_white.xnb">
+      <Link>Content\Images\tiled_white.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_yellow_large.xnb">
+      <Link>Content\Images\tiled_yellow_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_yellow_small.xnb">
+      <Link>Content\Images\tiled_yellow_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_yellow.xnb">
+      <Link>Content\Images\tiled_yellow.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_popup_center_large.xnb">
+      <Link>Content\Images\tiled_menu_popup_center_large.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_popup_center_small.xnb">
+      <Link>Content\Images\tiled_menu_popup_center_small.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\XNB\Images\tiled_menu_popup_center.xnb">
+      <Link>Content\Images\tiled_menu_popup_center.xnb</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_garden_front.bin">
+      <Link>Binary\base_garden_front.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_jungle_front.bin">
+      <Link>Binary\base_jungle_front.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_junk_front.bin">
+      <Link>Binary\base_junk_front.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_robot_front.bin">
+      <Link>Binary\base_robot_front.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_robot.bin">
+      <Link>Binary\base_robot.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_spooky_front.bin">
+      <Link>Binary\base_spooky_front.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_background1.bin">
+      <Link>Binary\battlepillars_large_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_background2.bin">
+      <Link>Binary\battlepillars_large_background2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_background3.bin">
+      <Link>Binary\battlepillars_large_background3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_basic1.bin">
+      <Link>Binary\battlepillars_large_basic1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_map1.bin">
+      <Link>Binary\battlepillars_large_map1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_menu1.bin">
+      <Link>Binary\battlepillars_large_menu1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_medium1.bin">
+      <Link>Binary\battlepillars_medium1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_medium2.bin">
+      <Link>Binary\battlepillars_medium2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_medium3.bin">
+      <Link>Binary\battlepillars_medium3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_small1.bin">
+      <Link>Binary\battlepillars_small1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\dailyrewardpopup.bin">
+      <Link>Binary\dailyrewardpopup.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\detailspopup.bin">
+      <Link>Binary\detailspopup.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\multiplayercreategamebutton.bin">
+      <Link>Binary\multiplayercreategamebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\multiplayergameselect.bin">
+      <Link>Binary\multiplayergameselect.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\startmenu.bin">
+      <Link>Binary\startmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\confirmpopupbutton.bin">
+      <Link>Binary\confirmpopupbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\infobutton.bin">
+      <Link>Binary\infobutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrademenu.bin">
+      <Link>Binary\upgrademenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\gamelobbymenu.bin">
+      <Link>Binary\gamelobbymenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_junkyard.bin">
+      <Link>Binary\boss_junkyard.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupgamemenu.bin">
+      <Link>Binary\setupgamemenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_logo1.bin">
+      <Link>Binary\battlepillars_large_logo1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_magmaball.bin">
+      <Link>Binary\boss_magmaball.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\explosions.bin">
+      <Link>Binary\explosions.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\pausemenu.bin">
+      <Link>Binary\pausemenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbar.bin">
+      <Link>Binary\setupbar.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbarbuttonleft.bin">
+      <Link>Binary\setupbarbuttonleft.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbarbuttonmiddle.bin">
+      <Link>Binary\setupbarbuttonmiddle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbarbuttonright.bin">
+      <Link>Binary\setupbarbuttonright.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonbar.bin">
+      <Link>Binary\setupbuttonbar.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttongarden.bin">
+      <Link>Binary\setupbuttongarden.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonjungle.bin">
+      <Link>Binary\setupbuttonjungle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonjunk.bin">
+      <Link>Binary\setupbuttonjunk.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonrandom.bin">
+      <Link>Binary\setupbuttonrandom.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonrobot.bin">
+      <Link>Binary\setupbuttonrobot.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupbuttonspooky.bin">
+      <Link>Binary\setupbuttonspooky.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupgamemenuoptions.bin">
+      <Link>Binary\setupgamemenuoptions.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\setupslider.bin">
+      <Link>Binary\setupslider.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_boss1.bin">
+      <Link>Binary\battlepillars_large_boss1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_garden.bin">
+      <Link>Binary\boss_garden.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\modeselectbutton.bin">
+      <Link>Binary\modeselectbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\modeselectmenu.bin">
+      <Link>Binary\modeselectmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectible_apple.bin">
+      <Link>Binary\collectible_apple.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectible_leaf.bin">
+      <Link>Binary\collectible_leaf.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\menu_gardentree.bin">
+      <Link>Binary\menu_gardentree.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\menu_jungletree.bin">
+      <Link>Binary\menu_jungletree.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\menu_junktree.bin">
+      <Link>Binary\menu_junktree.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\menu_playertree.bin">
+      <Link>Binary\menu_playertree.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\menu_spookytree.bin">
+      <Link>Binary\menu_spookytree.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\titlescreen_logo.bin">
+      <Link>Binary\titlescreen_logo.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\map.bin">
+      <Link>Binary\map.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_jungle.bin">
+      <Link>Binary\base_jungle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_button3.bin">
+      <Link>Binary\battlepillars_large_button3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_spider.bin">
+      <Link>Binary\boss_spider.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_lightning.bin">
+      <Link>Binary\boss_lightning.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_spooky.bin">
+      <Link>Binary\boss_spooky.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\bonusballoon.bin">
+      <Link>Binary\bonusballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstartlevelbutton.bin">
+      <Link>Binary\mapstartlevelbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\startbutton.bin">
+      <Link>Binary\startbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\backbutton.bin">
+      <Link>Binary\backbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\levelpreviewballoon.bin">
+      <Link>Binary\levelpreviewballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapchallengebutton.bin">
+      <Link>Binary\mapchallengebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\stagemenu.bin">
+      <Link>Binary\stagemenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\stageselectbutton.bin">
+      <Link>Binary\stageselectbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_jungle.bin">
+      <Link>Binary\boss_jungle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\firstbonusballoon.bin">
+      <Link>Binary\firstbonusballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\bonuschallengebutton.bin">
+      <Link>Binary\bonuschallengebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\popuppillar.bin">
+      <Link>Binary\popuppillar.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\launchbutton.bin">
+      <Link>Binary\launchbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\levelstartbutton.bin">
+      <Link>Binary\levelstartbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segmentselectmenu.bin">
+      <Link>Binary\segmentselectmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_toxichoney.bin">
+      <Link>Binary\zone_toxichoney.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\boss_spikes.bin">
+      <Link>Binary\boss_spikes.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\debugmenu.bin">
+      <Link>Binary\debugmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_ground1.bin">
+      <Link>Binary\level_garden_ground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\toxichoney.bin">
+      <Link>Binary\toxichoney.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\applecounter.bin">
+      <Link>Binary\applecounter.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\logonpopup.bin">
+      <Link>Binary\logonpopup.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlemenu.bin">
+      <Link>Binary\battlemenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\cameracontrolbutton.bin">
+      <Link>Binary\cameracontrolbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\balloon.bin">
+      <Link>Binary\balloon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_garden.bin">
+      <Link>Binary\base_garden.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_junk.bin">
+      <Link>Binary\base_junk.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\base_spooky.bin">
+      <Link>Binary\base_spooky.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_button1.bin">
+      <Link>Binary\battlepillars_large_button1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\battlepillars_large_button2.bin">
+      <Link>Binary\battlepillars_large_button2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\birdshadow.bin">
+      <Link>Binary\birdshadow.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\buybutton.bin">
+      <Link>Binary\buybutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\cancelbutton.bin">
+      <Link>Binary\cancelbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\cannonball.bin">
+      <Link>Binary\cannonball.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\cannonballoon.bin">
+      <Link>Binary\cannonballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\closebutton.bin">
+      <Link>Binary\closebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectible_applezap.bin">
+      <Link>Binary\collectible_applezap.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectible_leafzap.bin">
+      <Link>Binary\collectible_leafzap.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectibleappleanim.bin">
+      <Link>Binary\collectibleappleanim.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\collectibleleafanim.bin">
+      <Link>Binary\collectibleleafanim.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\confirmbutton.bin">
+      <Link>Binary\confirmbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\deathsplat.bin">
+      <Link>Binary\deathsplat.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\debugbutton.bin">
+      <Link>Binary\debugbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendable_squirrel_anim.bin">
+      <Link>Binary\expendable_squirrel_anim.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendable_turtle_anim.bin">
+      <Link>Binary\expendable_turtle_anim.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendablebird.bin">
+      <Link>Binary\expendablebird.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendablebuyapplesbutton.bin">
+      <Link>Binary\expendablebuyapplesbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendablebuybutton.bin">
+      <Link>Binary\expendablebuybutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendabledropdown.bin">
+      <Link>Binary\expendabledropdown.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendableleaf.bin">
+      <Link>Binary\expendableleaf.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendablepopup.bin">
+      <Link>Binary\expendablepopup.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\expendableturtle.bin">
+      <Link>Binary\expendableturtle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\facebook.bin">
+      <Link>Binary\facebook.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\fire_base.bin">
+      <Link>Binary\fire_base.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\fire_napalm.bin">
+      <Link>Binary\fire_napalm.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\fire_standard.bin">
+      <Link>Binary\fire_standard.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\firstalliesballoon.bin">
+      <Link>Binary\firstalliesballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\firstbaseupgradeballoon.bin">
+      <Link>Binary\firstbaseupgradeballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\firstbattleballoon.bin">
+      <Link>Binary\firstbattleballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\firstleafchallengeballoon.bin">
+      <Link>Binary\firstleafchallengeballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_1_segments.bin">
+      <Link>Binary\full_caterpillar_1_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_2_segments.bin">
+      <Link>Binary\full_caterpillar_2_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_3_segments.bin">
+      <Link>Binary\full_caterpillar_3_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_4_segments.bin">
+      <Link>Binary\full_caterpillar_4_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_5_segments.bin">
+      <Link>Binary\full_caterpillar_5_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_6_segments.bin">
+      <Link>Binary\full_caterpillar_6_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_7_segments.bin">
+      <Link>Binary\full_caterpillar_7_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_8_segments.bin">
+      <Link>Binary\full_caterpillar_8_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\full_caterpillar_9_segments.bin">
+      <Link>Binary\full_caterpillar_9_segments.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\grenades_lv1.bin">
+      <Link>Binary\grenades_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\grenades_lv2.bin">
+      <Link>Binary\grenades_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\grenades_lv3.bin">
+      <Link>Binary\grenades_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\healing.bin">
+      <Link>Binary\healing.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\honey.bin">
+      <Link>Binary\honey.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\leafcounter.bin">
+      <Link>Binary\leafcounter.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_background1.bin">
+      <Link>Binary\level_garden_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_flowers.bin">
+      <Link>Binary\level_garden_flowers.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_foreground1.bin">
+      <Link>Binary\level_garden_foreground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_leaves.bin">
+      <Link>Binary\level_garden_leaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_garden_sky1.bin">
+      <Link>Binary\level_garden_sky1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_jungle_background1.bin">
+      <Link>Binary\level_jungle_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_jungle_foreground1.bin">
+      <Link>Binary\level_jungle_foreground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_jungle_ground1.bin">
+      <Link>Binary\level_jungle_ground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_jungle_leaves.bin">
+      <Link>Binary\level_jungle_leaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_jungle_sky1.bin">
+      <Link>Binary\level_jungle_sky1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_junk_background1.bin">
+      <Link>Binary\level_junk_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_junk_foreground1.bin">
+      <Link>Binary\level_junk_foreground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_junk_ground1.bin">
+      <Link>Binary\level_junk_ground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_junk_leaves.bin">
+      <Link>Binary\level_junk_leaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_junk_sky1.bin">
+      <Link>Binary\level_junk_sky1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_robot_background1.bin">
+      <Link>Binary\level_robot_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_robot_foreground1.bin">
+      <Link>Binary\level_robot_foreground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_robot_ground1.bin">
+      <Link>Binary\level_robot_ground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_robot_leaves.bin">
+      <Link>Binary\level_robot_leaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_robot_sky1.bin">
+      <Link>Binary\level_robot_sky1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_background1.bin">
+      <Link>Binary\level_spooky_background1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_foreground1.bin">
+      <Link>Binary\level_spooky_foreground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_ground1.bin">
+      <Link>Binary\level_spooky_ground1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_leaves.bin">
+      <Link>Binary\level_spooky_leaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_sky1.bin">
+      <Link>Binary\level_spooky_sky1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_spider.bin">
+      <Link>Binary\level_spooky_spider.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\level_spooky_spider2.bin">
+      <Link>Binary\level_spooky_spider2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\loadingspinner.bin">
+      <Link>Binary\loadingspinner.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapheadgarden.bin">
+      <Link>Binary\mapheadgarden.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapheadjungle.bin">
+      <Link>Binary\mapheadjungle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapheadjunk.bin">
+      <Link>Binary\mapheadjunk.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapheadrobot.bin">
+      <Link>Binary\mapheadrobot.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapheadspooky.bin">
+      <Link>Binary\mapheadspooky.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep3.bin">
+      <Link>Binary\mapstep3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep3flipped.bin">
+      <Link>Binary\mapstep3flipped.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep4.bin">
+      <Link>Binary\mapstep4.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep4flipped.bin">
+      <Link>Binary\mapstep4flipped.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep5.bin">
+      <Link>Binary\mapstep5.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\mapstep5flipped.bin">
+      <Link>Binary\mapstep5flipped.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\medic_lv1.bin">
+      <Link>Binary\medic_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\medic_lv2.bin">
+      <Link>Binary\medic_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\medic_lv3.bin">
+      <Link>Binary\medic_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\minimap.bin">
+      <Link>Binary\minimap.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\minimapview.bin">
+      <Link>Binary\minimapview.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\missile_lv1.bin">
+      <Link>Binary\missile_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\missile_lv2.bin">
+      <Link>Binary\missile_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\missile_lv3.bin">
+      <Link>Binary\missile_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\pausedbackbutton.bin">
+      <Link>Binary\pausedbackbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\pausedlevelselectbutton.bin">
+      <Link>Binary\pausedlevelselectbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\pausedsegmentmenubutton.bin">
+      <Link>Binary\pausedsegmentmenubutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\pausedvolumebutton.bin">
+      <Link>Binary\pausedvolumebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\poop.bin">
+      <Link>Binary\poop.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\popupmenu.bin">
+      <Link>Binary\popupmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\productionbutton.bin">
+      <Link>Binary\productionbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\raygun.bin">
+      <Link>Binary\raygun.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_armor_lv1.bin">
+      <Link>Binary\segment_armor_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_armor_lv2.bin">
+      <Link>Binary\segment_armor_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_armor_lv3.bin">
+      <Link>Binary\segment_armor_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_basic.bin">
+      <Link>Binary\segment_basic.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_basichead_lv1.bin">
+      <Link>Binary\segment_basichead_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_basichead_lv2.bin">
+      <Link>Binary\segment_basichead_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_basichead_lv3.bin">
+      <Link>Binary\segment_basichead_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_bellows_lv1.bin">
+      <Link>Binary\segment_bellows_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_bellows_lv2.bin">
+      <Link>Binary\segment_bellows_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_bellows_lv3.bin">
+      <Link>Binary\segment_bellows_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_cannon_lv1.bin">
+      <Link>Binary\segment_cannon_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_cannon_lv2.bin">
+      <Link>Binary\segment_cannon_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_cannon_lv3.bin">
+      <Link>Binary\segment_cannon_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_carapace_lv1.bin">
+      <Link>Binary\segment_carapace_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_carapace_lv2.bin">
+      <Link>Binary\segment_carapace_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_carapace_lv3.bin">
+      <Link>Binary\segment_carapace_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_error.bin">
+      <Link>Binary\segment_error.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_feet_lv1.bin">
+      <Link>Binary\segment_feet_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_feet_lv2.bin">
+      <Link>Binary\segment_feet_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_feet_lv3.bin">
+      <Link>Binary\segment_feet_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_flamethrower_lv1.bin">
+      <Link>Binary\segment_flamethrower_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_flamethrower_lv2.bin">
+      <Link>Binary\segment_flamethrower_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_flamethrower_lv3.bin">
+      <Link>Binary\segment_flamethrower_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grenade_lv1.bin">
+      <Link>Binary\segment_grenade_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grenade_lv2.bin">
+      <Link>Binary\segment_grenade_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grenade_lv3.bin">
+      <Link>Binary\segment_grenade_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grub_lv1.bin">
+      <Link>Binary\segment_grub_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grub_lv2.bin">
+      <Link>Binary\segment_grub_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_grub_lv3.bin">
+      <Link>Binary\segment_grub_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_gun_lv1.bin">
+      <Link>Binary\segment_gun_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_gun_lv2.bin">
+      <Link>Binary\segment_gun_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_gun_lv3.bin">
+      <Link>Binary\segment_gun_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_honey_lv1.bin">
+      <Link>Binary\segment_honey_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_honey_lv2.bin">
+      <Link>Binary\segment_honey_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_honey_lv3.bin">
+      <Link>Binary\segment_honey_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_medic_lv1.bin">
+      <Link>Binary\segment_medic_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_medic_lv2.bin">
+      <Link>Binary\segment_medic_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_medic_lv3.bin">
+      <Link>Binary\segment_medic_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_mines_lv1.bin">
+      <Link>Binary\segment_mines_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_mines_lv2.bin">
+      <Link>Binary\segment_mines_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_mines_lv3.bin">
+      <Link>Binary\segment_mines_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_missile_lv1.bin">
+      <Link>Binary\segment_missile_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_missile_lv2.bin">
+      <Link>Binary\segment_missile_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_missile_lv3.bin">
+      <Link>Binary\segment_missile_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_spikes_lv1.bin">
+      <Link>Binary\segment_spikes_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_spikes_lv2.bin">
+      <Link>Binary\segment_spikes_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segment_spikes_lv3.bin">
+      <Link>Binary\segment_spikes_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segmentbutton.bin">
+      <Link>Binary\segmentbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segmentpreview.bin">
+      <Link>Binary\segmentpreview.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segmentpreviewanim.bin">
+      <Link>Binary\segmentpreviewanim.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\segmentselectbutton.bin">
+      <Link>Binary\segmentselectbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\skinrewardballoon.bin">
+      <Link>Binary\skinrewardballoon.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\spikes_lv1.bin">
+      <Link>Binary\spikes_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\spikes_lv2.bin">
+      <Link>Binary\spikes_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\spikes_lv3.bin">
+      <Link>Binary\spikes_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\splashscreen.bin">
+      <Link>Binary\splashscreen.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\swarm_lv1.bin">
+      <Link>Binary\swarm_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\swarm_lv2.bin">
+      <Link>Binary\swarm_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\swarm_lv3.bin">
+      <Link>Binary\swarm_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\testbattlemenu.bin">
+      <Link>Binary\testbattlemenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoonbigcenter.bin">
+      <Link>Binary\tipballoonbigcenter.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoonbottomcenter.bin">
+      <Link>Binary\tipballoonbottomcenter.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoonbottomleft.bin">
+      <Link>Binary\tipballoonbottomleft.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoonbottomright.bin">
+      <Link>Binary\tipballoonbottomright.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoontopleft.bin">
+      <Link>Binary\tipballoontopleft.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipballoontopright.bin">
+      <Link>Binary\tipballoontopright.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tiplaunchbutton.bin">
+      <Link>Binary\tiplaunchbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tipleaves.bin">
+      <Link>Binary\tipleaves.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\trashbutton.bin">
+      <Link>Binary\trashbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treegarden.bin">
+      <Link>Binary\treegarden.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treejungle.bin">
+      <Link>Binary\treejungle.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treejunk.bin">
+      <Link>Binary\treejunk.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treeplayer.bin">
+      <Link>Binary\treeplayer.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treerobot.bin">
+      <Link>Binary\treerobot.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\treespooky.bin">
+      <Link>Binary\treespooky.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrade_gun1.bin">
+      <Link>Binary\upgrade_gun1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrade_gun2.bin">
+      <Link>Binary\upgrade_gun2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrade_gun3.bin">
+      <Link>Binary\upgrade_gun3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrade_leafproduction.bin">
+      <Link>Binary\upgrade_leafproduction.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradeapplebutton.bin">
+      <Link>Binary\upgradeapplebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradebasebutton.bin">
+      <Link>Binary\upgradebasebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradeexpendablebutton.bin">
+      <Link>Binary\upgradeexpendablebutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgrademenubutton.bin">
+      <Link>Binary\upgrademenubutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradesegmentbutton.bin">
+      <Link>Binary\upgradesegmentbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradeskinbutton.bin">
+      <Link>Binary\upgradeskinbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\upgradetabbutton.bin">
+      <Link>Binary\upgradetabbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\victorydefeatmenu.bin">
+      <Link>Binary\victorydefeatmenu.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\weather_rain.bin">
+      <Link>Binary\weather_rain.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_air_lv1.bin">
+      <Link>Binary\zone_air_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_air_lv2.bin">
+      <Link>Binary\zone_air_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_air_lv3.bin">
+      <Link>Binary\zone_air_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_flames_lv1.bin">
+      <Link>Binary\zone_flames_lv1.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_flames_lv2.bin">
+      <Link>Binary\zone_flames_lv2.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_flames_lv3.bin">
+      <Link>Binary\zone_flames_lv3.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_honey.bin">
+      <Link>Binary\zone_honey.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_mines.bin">
+      <Link>Binary\zone_mines.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_napalm.bin">
+      <Link>Binary\zone_napalm.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\zone_poop.bin">
+      <Link>Binary\zone_poop.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\tiplaunch.bin">
+      <Link>Binary\tiplaunch.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\refreshbutton.bin">
+      <Link>Binary\refreshbutton.bin</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Images\Spritesheets\battlepillars_large_background3.png">
+      <Link>Content\Images\battlepillars_large_background3.png</Link>
+    </Content>
+    <Content Include="..\..\..\Assets\Binary\multiplayerjoingamebutton.bin">
+      <Link>Binary\multiplayerjoingamebutton.bin</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\Assets\Resx\Strings.resx">
+      <Link>Strings.resx</Link>
+      <DeployService-Deploy>True</DeployService-Deploy>
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
+      <DeployService-UseProjectRelativePath>True</DeployService-UseProjectRelativePath>
+      <DeployService-HasPathReferences>True</DeployService-HasPathReferences>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Icon.png" />
+    <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\Icon-72.png" />
+    <BundleResource Include="Resources\Icon-72%402x.png" />
+    <BundleResource Include="Resources\Icon-Small.png" />
+    <BundleResource Include="Resources\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\Icon-Small-50.png" />
+    <BundleResource Include="Resources\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-Landscape.png" />
+    <BundleResource Include="Resources\Default-Landscape%402x.png" />
+  </ItemGroup>
+</Project>
