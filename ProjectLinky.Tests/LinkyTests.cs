@@ -9,8 +9,9 @@ namespace ProjectLinky.Tests
 {
     [TestClass, 
         DeploymentItem("Data\\test-linky.xml"),
-        DeploymentItem("Data\\BattlePillars.Droid.csproj"),
-        DeploymentItem("Data\\BattlePillars.iOS.csproj")]
+        DeploymentItem("Data\\Android.csproj"),
+        DeploymentItem("Data\\iOS.csproj"),
+        DeploymentItem("Data\\Images\\chuck.png")]
     public class LinkyTests
     {
         private Options _options;
@@ -56,6 +57,7 @@ namespace ProjectLinky.Tests
         [TestMethod]
         public void ParseConfig()
         {
+            _options.DryRun = true;
             _options.InputFile = "test-linky.xml";
 
             bool callback = false;
