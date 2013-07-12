@@ -117,8 +117,5 @@
     <Content Include="Images\chuck.png">
       <Link>Content\Images\chuck.png</Link>
     </Content>
-	<Content Include="Images\garbage.png">
-      <Link>Content\Images\garbage.png</Link>
-    </Content>
   </ItemGroup>
 </Project>

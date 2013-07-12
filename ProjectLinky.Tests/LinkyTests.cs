@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ApprovalTests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -7,11 +8,7 @@ using System.Text;
 
 namespace ProjectLinky.Tests
 {
-    [TestClass, 
-        DeploymentItem("Data\\test-linky.xml"),
-        DeploymentItem("Data\\Android.csproj"),
-        DeploymentItem("Data\\iOS.csproj"),
-        DeploymentItem("Data\\Images\\chuck.png")]
+    [TestClass, DeploymentItem("Data\\test-linky.xml")]
     public class LinkyTests
     {
         private Options _options;
@@ -54,7 +51,10 @@ namespace ProjectLinky.Tests
             }
         }
 
-        [TestMethod]
+        [TestMethod,        
+            DeploymentItem("Data\\Android.csproj"),
+            DeploymentItem("Data\\iOS.csproj"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images")]
         public void ParseConfig()
         {
             _options.DryRun = true;
@@ -67,6 +67,70 @@ namespace ProjectLinky.Tests
             });
 
             Assert.IsTrue(callback, "Didn't fire callback!");
+        }
+
+        [TestMethod,
+            DeploymentItem("Data\\Android.csproj"),
+            DeploymentItem("Data\\iOS.csproj"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images")]
+        public void RemoveItemGroup()
+        {
+            _options.DryRun = true;
+            _options.InputFile = "test-linky.xml";
+
+            List<string> removed = new List<string>();
+            Linky.Run(_options, removeCallback: (p, f) =>
+            {
+                removed.Add(f);
+            });
+
+            Approvals.VerifyAll(removed, "file");
+        }
+
+        [TestMethod,
+            DeploymentItem("Data\\Android.csproj"),
+            DeploymentItem("Data\\iOS.csproj"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images")]
+        public void ApproveiOS()
+        {
+            _options.InputFile = "test-linky.xml";
+
+            Linky.Run(_options,c =>
+            {
+                c.Projects = new[]
+                { 
+                    new Project
+                    {
+                        Path = "iOS.csproj",
+                        Rules = new[] { new Rule { InputPattern = @"Images\*.png", OutputPattern = @"Content\Images", BuildAction = "Content" } },
+                    },
+                };
+            });
+
+            Approvals.VerifyFile("iOS.csproj");
+        }
+
+        [TestMethod,
+            DeploymentItem("Data\\Android.csproj"),
+            DeploymentItem("Data\\iOS.csproj"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images")]
+        public void ApproveAndroid()
+        {
+            _options.InputFile = "test-linky.xml";
+
+            Linky.Run(_options, c =>
+            {
+                c.Projects = new[]
+                { 
+                    new Project
+                    {
+                        Path = "Android.csproj",
+                        Rules = new[] { new Rule { InputPattern = @"Images\*.png", OutputPattern = @"Assets\Images\", BuildAction = "AndroidAsset" } },
+                    },
+                };
+            });
+
+            Approvals.VerifyFile("Android.csproj");
         }
     }
 }

@@ -61,8 +61,5 @@
     <AndroidAsset Include="Images\chuck.png">
       <Link>Assets\Images\chuck.png</Link>
     </AndroidAsset>
-	<AndroidAsset Include="Images\garbage.png">
-      <Link>Assets\Images\garbage.png</Link>
-    </AndroidAsset>
   </ItemGroup>
 </Project>

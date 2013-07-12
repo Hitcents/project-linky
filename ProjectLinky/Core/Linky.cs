@@ -13,7 +13,7 @@ namespace ProjectLinky
     {
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Config));
 
-        public static void Run(Options options, Action<Config> configCallback = null)
+        public static void Run(Options options, Action<Config> configCallback = null, Action<Project, string> removeCallback = null)
         {
             string inputPath = options.InputFile;
 
@@ -49,15 +49,19 @@ namespace ProjectLinky
                 var doc = new XmlDocument();
                 doc.Load(projectPath);
 
-                var ns = new XmlNamespaceManager(doc.NameTable);
-                ns.AddNamespace("x", "http://schemas.microsoft.com/developer/msbuild/2003");
+                bool needsSave = false;
 
                 foreach (XmlNode itemGroup in doc.DocumentElement.GetElementsByTagName("ItemGroup"))
                 {
                     foreach (XmlNode node in itemGroup)
                     {
                         var linkNode = node.FirstChild;
+
                         if (linkNode == null || linkNode.Name != "Link")
+                            continue;
+
+                        var includeNode = node.Attributes["Include"];
+                        if (includeNode == null)
                             continue;
 
                         //Remove files from project that don't exist
@@ -67,12 +71,28 @@ namespace ProjectLinky
 
                             if (Regex.IsMatch(linkNode.InnerText, pattern))
                             {
+                                if (!File.Exists(includeNode.Value))
+                                {
+                                    if (removeCallback != null)
+                                        removeCallback(project, includeNode.Value);
 
+                                    if (!options.DryRun)
+                                    {
+                                        node.ParentNode.RemoveChild(node);
+
+                                        needsSave = true;
+                                    }
+                                }
                             }
                         }
 
                         //Add new files to project
                     }
+                }
+
+                if (!options.DryRun && needsSave)
+                {
+                    doc.Save(projectPath);
                 }
             }
         }
@@ -82,6 +102,23 @@ namespace ProjectLinky
             pattern = pattern.Replace("\\", "\\\\");
 
             return pattern;
+        }
+
+        private static string ToRelativePath(string basePath, string absolutePath)
+        {
+            var uri = new Uri(absolutePath, UriKind.RelativeOrAbsolute);
+            if (!uri.IsAbsoluteUri)
+            {
+                uri = new Uri(Path.GetFullPath(absolutePath));
+            }
+
+            var baseUri = new Uri(basePath, UriKind.RelativeOrAbsolute);
+            if (!baseUri.IsAbsoluteUri)
+            {
+                baseUri = new Uri(Path.GetFullPath(basePath));
+            }
+
+            return baseUri.MakeRelativeUri(uri).LocalPath;
         }
     }
 }
