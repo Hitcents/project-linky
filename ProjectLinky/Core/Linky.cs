@@ -13,7 +13,7 @@ namespace ProjectLinky
     {
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Config));
 
-        public static void Run(Options options, Action<Config> configCallback = null, Action<Project, string> removeCallback = null)
+        public static void Run(Options options, Action<Config> configCallback = null, Action<Project, string> removeCallback = null, Action<Project, string> addCallback = null)
         {
             string inputPath = options.InputFile;
 
@@ -52,6 +52,7 @@ namespace ProjectLinky
                 bool needsSave = false;
 
                 List<string> existing = new List<string>();
+                List<Action> removeNodes = new List<Action>();
 
                 //Remove files from project that do not exist
                 foreach (XmlNode itemGroup in doc.DocumentElement.GetElementsByTagName("ItemGroup"))
@@ -84,14 +85,28 @@ namespace ProjectLinky
 
                                     if (!options.DryRun)
                                     {
-                                        node.ParentNode.RemoveChild(node);
-
-                                        needsSave = true;
+                                        //We have to add a lambda to the list so it can be removed after the for-each loop
+                                        var temp = node;
+                                        var tempGroup = itemGroup;
+                                        removeNodes.Add(() =>
+                                        {
+                                            temp.ParentNode.RemoveChild(temp);
+                                            if (tempGroup.ChildNodes.Count == 0)
+                                                tempGroup.ParentNode.RemoveChild(tempGroup);
+                                        });
                                     }
                                 }
                             }
                         }
                     }
+                }
+
+                //Peform actions to remove nodes
+                foreach (var action in removeNodes)
+                {
+                    action();
+
+                    needsSave = true;
                 }
 
                 //Add new files to project
@@ -103,17 +118,25 @@ namespace ProjectLinky
 
                         if (!existing.Contains(relative))
                         {
-                            var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
+                            if (addCallback != null)
+                                addCallback(project, relative);
 
-                            var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
-                            content.SetAttribute("Include", relative);
-                            itemGroup.AppendChild(content);
+                            if (!options.DryRun)
+                            {
+                                var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
 
-                            var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);
-                            link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(file));
-                            content.AppendChild(link);
+                                var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
+                                content.SetAttribute("Include", relative);
+                                itemGroup.AppendChild(content);
 
-                            doc.DocumentElement.AppendChild(itemGroup);
+                                var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);
+                                link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(file));
+                                content.AppendChild(link);
+
+                                doc.DocumentElement.AppendChild(itemGroup);
+
+                                needsSave = true;
+                            }
                         }
                     }
                 }

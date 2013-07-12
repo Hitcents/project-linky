@@ -88,7 +88,6 @@ namespace ProjectLinky.Tests
         }
 
         [TestMethod,
-            DeploymentItem("Data\\Android.csproj"),
             DeploymentItem("Data\\iOS.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
@@ -113,7 +112,6 @@ namespace ProjectLinky.Tests
 
         [TestMethod,
             DeploymentItem("Data\\Android.csproj"),
-            DeploymentItem("Data\\iOS.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveAndroid()
@@ -133,6 +131,52 @@ namespace ProjectLinky.Tests
             });
 
             Approvals.VerifyFile("Android.csproj");
+        }
+
+        [TestMethod,
+            DeploymentItem("Data\\Code\\iOS.csproj", "Code"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images"),
+            DeploymentItem("Data\\Images\\nerd.png", "Images")]
+        public void ApproveiOSSubdirectory()
+        {
+            _options.InputFile = "test-linky.xml";
+
+            Linky.Run(_options, c =>
+            {
+                c.Projects = new[]
+                { 
+                    new Project
+                    {
+                        Path = "Code\\iOS.csproj",
+                        Rules = new[] { new Rule { InputPattern = @"Images\*.png", OutputPattern = @"Content\Images", BuildAction = "Content" } },
+                    },
+                };
+            });
+
+            Approvals.VerifyFile("Code\\iOS.csproj");
+        }
+
+        [TestMethod,
+            DeploymentItem("Data\\Code\\Android.csproj", "Code"),
+            DeploymentItem("Data\\Images\\chuck.png", "Images"),
+            DeploymentItem("Data\\Images\\nerd.png", "Images")]
+        public void ApproveAndroidSubDirectory()
+        {
+            _options.InputFile = "test-linky.xml";
+
+            Linky.Run(_options, c =>
+            {
+                c.Projects = new[]
+                { 
+                    new Project
+                    {
+                        Path = "Code\\Android.csproj",
+                        Rules = new[] { new Rule { InputPattern = @"Images\*.png", OutputPattern = @"Assets\Images\", BuildAction = "AndroidAsset" } },
+                    },
+                };
+            });
+
+            Approvals.VerifyFile("Code\\Android.csproj");
         }
     }
 }
