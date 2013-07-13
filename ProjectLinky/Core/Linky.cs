@@ -34,7 +34,7 @@ namespace ProjectLinky
             if (configCallback != null)
                 configCallback(config);
 
-            string inputDirectory = Path.GetDirectoryName(Path.GetFullPath(options.InputFile));
+            string inputDirectory = Path.GetDirectoryName(Path.GetFullPath(inputPath));
 
             foreach (var project in config.Projects)
             {
