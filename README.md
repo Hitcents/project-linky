@@ -3,7 +3,7 @@ project linky
 
 A project linking tool for cross platform development. Still a prototype, but should still be pretty useful for keeping `*.csproj` files in sync. 
 
-`linky` takes in an xml file for input, and adds/removes linked files 
+`linky` takes in an xml file for input, and adds/removes linked files based on if a file exists in a target directory.
 
 Example file:
 
