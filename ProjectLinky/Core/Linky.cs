@@ -28,6 +28,8 @@ namespace ProjectLinky
             {
                 config = _serializer.Deserialize(file) as Config;
             }
+            if (config.Projects == null)
+                throw new Exception("No projects found!");
 
             if (configCallback != null)
                 configCallback(config);
@@ -51,7 +53,7 @@ namespace ProjectLinky
 
                 bool needsSave = false;
 
-                List<string> existing = new List<string>();
+                Dictionary<Project, List<string>> existing = new Dictionary<Project, List<string>>();
                 List<Action> removeNodes = new List<Action>();
 
                 //Remove files from project that do not exist
@@ -74,14 +76,22 @@ namespace ProjectLinky
 
                             if (Regex.IsMatch(linkNode.InnerText, pattern))
                             {
-                                if (File.Exists(includeNode.Value))
+                                string realPath = Path.Combine(Path.GetDirectoryName(projectPath), includeNode.Value);
+
+                                if (File.Exists(realPath))
                                 {
-                                    existing.Add(includeNode.Value);
+                                    List<string> list;
+                                    if (!existing.TryGetValue(project, out list))
+                                    {
+                                        existing[project] =
+                                            list = new List<string>();
+                                    }
+                                    list.Add(includeNode.Value.ToUpperInvariant());
                                 }
                                 else
                                 {
                                     if (removeCallback != null)
-                                        removeCallback(project, includeNode.Value);
+                                        removeCallback(project, Path.GetFileName(includeNode.Value));
 
                                     if (!options.DryRun)
                                     {
@@ -114,19 +124,19 @@ namespace ProjectLinky
                 {
                     foreach (var file in Directory.EnumerateFiles(inputDirectory, rule.InputPattern))
                     {
-                        string relative = ToRelativePath(project.Path, file);
-
-                        if (!existing.Contains(relative))
+                        List<string> list;
+                        string realPath = ToRelativePath(projectPath, file);
+                        if (existing.TryGetValue(project, out list) && !list.Contains(realPath.ToUpperInvariant()))
                         {
                             if (addCallback != null)
-                                addCallback(project, relative);
+                                addCallback(project, Path.GetFileName(file));
 
                             if (!options.DryRun)
                             {
                                 var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
 
                                 var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
-                                content.SetAttribute("Include", relative);
+                                content.SetAttribute("Include", realPath);
                                 itemGroup.AppendChild(content);
 
                                 var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);

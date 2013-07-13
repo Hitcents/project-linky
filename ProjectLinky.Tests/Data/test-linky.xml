@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <linky xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <projects path="Android.csproj">
-    <rules inputPattern="Images\*.png" outputPattern="Assets\Images\" buildAction="AndroidAsset" />
-  </projects>
-  <projects path="iOS.csproj">
-    <rules inputPattern="Images\*.png" outputPattern="Content\Images\" buildAction="Content" />
-  </projects>
+  <project path="Android.csproj">
+    <rule inputPattern="Images\*.png" outputPattern="Assets\Images\" buildAction="AndroidAsset" />
+  </project>
+  <project path="iOS.csproj">
+    <rule inputPattern="Images\*.png" outputPattern="Content\Images\" buildAction="Content" />
+  </project>
 </linky>

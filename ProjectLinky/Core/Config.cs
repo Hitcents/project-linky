@@ -10,7 +10,7 @@ namespace ProjectLinky
     [XmlRoot(ElementName = "linky")]
     public class Config
     {
-        [XmlElement(ElementName = "projects")]
+        [XmlElement(ElementName = "project")]
         public Project[] Projects { get; set; }
     }
 }

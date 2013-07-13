@@ -13,7 +13,7 @@ namespace ProjectLinky
         [XmlAttribute(AttributeName = "path")]
         public string Path { get; set; }
 
-        [XmlElement(ElementName = "rules")]
+        [XmlElement(ElementName = "rule")]
         public Rule[] Rules { get; set; }
     }
 }
