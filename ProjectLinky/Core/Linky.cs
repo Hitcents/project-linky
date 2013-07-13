@@ -69,6 +69,7 @@ namespace ProjectLinky
                         var includeNode = node.Attributes["Include"];
                         if (includeNode == null)
                             continue;
+                        string relativePath = includeNode.Value;
 
                         foreach (var rule in project.Rules)
                         {
@@ -76,9 +77,14 @@ namespace ProjectLinky
 
                             if (Regex.IsMatch(linkNode.InnerText, pattern))
                             {
-                                string realPath = Path.Combine(Path.GetDirectoryName(projectPath), includeNode.Value);
+                                //Check exclude
+                                if (!string.IsNullOrEmpty(rule.ExcludePattern) && Regex.IsMatch(relativePath, rule.ExcludePattern))
+                                {
+                                    continue;
+                                }
 
-                                if (File.Exists(realPath))
+                                string fullPath = Path.Combine(Path.GetDirectoryName(projectPath), relativePath);
+                                if (File.Exists(fullPath))
                                 {
                                     List<string> list;
                                     if (!existing.TryGetValue(project, out list))
@@ -86,12 +92,14 @@ namespace ProjectLinky
                                         existing[project] =
                                             list = new List<string>();
                                     }
-                                    list.Add(includeNode.Value.ToUpperInvariant());
+
+                                    //Use ToUpper() to account for weird casing issues
+                                    list.Add(relativePath.ToUpperInvariant());
                                 }
                                 else
                                 {
                                     if (removeCallback != null)
-                                        removeCallback(project, Path.GetFileName(includeNode.Value));
+                                        removeCallback(project, Path.GetFileName(relativePath));
 
                                     if (!options.DryRun)
                                     {
@@ -122,25 +130,31 @@ namespace ProjectLinky
                 //Add new files to project
                 foreach (var rule in project.Rules)
                 {
-                    foreach (var file in Directory.EnumerateFiles(inputDirectory, rule.InputPattern))
+                    foreach (var fullPath in Directory.EnumerateFiles(inputDirectory, rule.InputPattern, SearchOption.AllDirectories))
                     {
                         List<string> list;
-                        string realPath = ToRelativePath(projectPath, file);
-                        if (existing.TryGetValue(project, out list) && !list.Contains(realPath.ToUpperInvariant()))
+                        string relativePath = ToRelativePath(projectPath, fullPath);
+                        if (existing.TryGetValue(project, out list) && !list.Contains(relativePath.ToUpperInvariant()))
                         {
+                            //Check for exclude
+                            if (!string.IsNullOrEmpty(rule.ExcludePattern) && Regex.IsMatch(relativePath, rule.ExcludePattern))
+                            {
+                                continue;
+                            }
+
                             if (addCallback != null)
-                                addCallback(project, Path.GetFileName(file));
+                                addCallback(project, Path.GetFileName(fullPath));
 
                             if (!options.DryRun)
                             {
                                 var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
 
                                 var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
-                                content.SetAttribute("Include", realPath);
+                                content.SetAttribute("Include", relativePath);
                                 itemGroup.AppendChild(content);
 
                                 var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);
-                                link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(file));
+                                link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(fullPath));
                                 content.AppendChild(link);
 
                                 doc.DocumentElement.AppendChild(itemGroup);

@@ -1,2 +1,2 @@
-﻿file[0] = Images\garbage.png
-file[1] = Images\garbage.png
+﻿file[0] = garbage.png
+file[1] = garbage.png

@@ -18,5 +18,8 @@ namespace ProjectLinky
 
         [XmlAttribute(AttributeName = "buildAction")]
         public string BuildAction { get; set; }
+
+        [XmlAttribute(AttributeName = "excludePattern")]
+        public string ExcludePattern { get; set; }
     }
 }
