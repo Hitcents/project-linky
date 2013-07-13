@@ -77,14 +77,8 @@ namespace ProjectLinky
 
                             if (Regex.IsMatch(linkNode.InnerText, pattern))
                             {
-                                //Check exclude
-                                if (!string.IsNullOrEmpty(rule.ExcludePattern) && Regex.IsMatch(relativePath, rule.ExcludePattern))
-                                {
-                                    continue;
-                                }
-
                                 string fullPath = Path.Combine(Path.GetDirectoryName(projectPath), relativePath);
-                                if (File.Exists(fullPath))
+                                if (File.Exists(fullPath) && (string.IsNullOrEmpty(rule.ExcludePattern) || !Regex.IsMatch(relativePath, rule.ExcludePattern)))
                                 {
                                     List<string> list;
                                     if (!existing.TryGetValue(project, out list))
