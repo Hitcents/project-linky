@@ -48,6 +48,7 @@ Values:
 * `inputPattern` - passed to `Directory.EnumerateFiles` for matching input files
 * `outputPattern` - folder in the project to add the linked file to
 * `excludePattern` - if desired, you can add a regular expression to exclude files
+* `buildAction` - the build action for the linked file
 
 To update files, merely run `linky` in the root of your source control directory, or `linky --dry-run` to see what would be changed first.
 
