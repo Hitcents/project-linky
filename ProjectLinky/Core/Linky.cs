@@ -75,10 +75,10 @@ namespace ProjectLinky
                         {
                             string pattern = RegexFormat(rule.OutputPattern);
 
-                            if (Regex.IsMatch(linkNode.InnerText, pattern))
+                            if (Regex.IsMatch(linkNode.InnerText, "^" + pattern, RegexOptions.IgnoreCase))
                             {
                                 string fullPath = Path.Combine(Path.GetDirectoryName(projectPath), relativePath);
-                                if (File.Exists(fullPath) && (string.IsNullOrEmpty(rule.ExcludePattern) || !Regex.IsMatch(relativePath, rule.ExcludePattern)))
+                                if (File.Exists(fullPath) && (string.IsNullOrEmpty(rule.ExcludePattern) || !Regex.IsMatch(relativePath, rule.ExcludePattern, RegexOptions.IgnoreCase)))
                                 {
                                     List<string> list;
                                     if (!existing.TryGetValue(project, out list))
@@ -131,7 +131,7 @@ namespace ProjectLinky
                         if (existing.TryGetValue(project, out list) && !list.Contains(relativePath.ToUpperInvariant()))
                         {
                             //Check for exclude
-                            if (!string.IsNullOrEmpty(rule.ExcludePattern) && Regex.IsMatch(relativePath, rule.ExcludePattern))
+                            if (!string.IsNullOrEmpty(rule.ExcludePattern) && Regex.IsMatch(relativePath, rule.ExcludePattern, RegexOptions.IgnoreCase))
                             {
                                 continue;
                             }
@@ -187,7 +187,7 @@ namespace ProjectLinky
                 baseUri = new Uri(Path.GetFullPath(basePath));
             }
 
-            return baseUri.MakeRelativeUri(uri).ToString().Replace("/", "\\");
+            return Uri.UnescapeDataString(baseUri.MakeRelativeUri(uri).ToString()).Replace("/", "\\");
         }
     }
 }
