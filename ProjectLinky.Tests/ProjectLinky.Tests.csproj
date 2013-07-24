@@ -63,6 +63,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="LinkyTests.cs" />
+    <Compile Include="Mocking\MockProjectFile.cs" />
     <Compile Include="TestConstants.cs" />
     <Compile Include="XmlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,19 +78,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\Android.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Code\Android.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\Code\iOS.csproj">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Data\Images\nerd.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\iOS.csproj">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Images\chuck.png">

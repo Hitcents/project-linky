@@ -1,0 +1,2 @@
+﻿ItemGroup[0] = Link: Assets\Images\chuck.png Include: Images\chuck.png BuildAction: AndroidAsset
+ItemGroup[1] = Link: Assets\Images\nerd.png Include: Images\nerd.png BuildAction: AndroidAsset

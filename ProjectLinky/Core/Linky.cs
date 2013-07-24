@@ -13,6 +13,8 @@ namespace ProjectLinky
     {
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Config));
 
+        public static Func<ProjectFile> GetProjectFile = () => new ProjectFile();
+
         public static void Run(Options options, Action<Config> configCallback = null, Action<Project, string> removeCallback = null, Action<Project, string> addCallback = null)
         {
             string inputPath = options.InputFile;
@@ -48,65 +50,45 @@ namespace ProjectLinky
                     projectPath = Path.Combine(inputDirectory, projectPath);
                 }
 
-                var doc = new XmlDocument();
-                doc.Load(projectPath);
+                var projectFile = GetProjectFile();
+                projectFile.Load(projectPath);
 
                 bool needsSave = false;
-
-                Dictionary<Project, List<string>> existing = new Dictionary<Project, List<string>>();
-                List<Action> removeNodes = new List<Action>();
+                var existing = new Dictionary<Project, List<string>>();
+                var removeNodes = new List<Action>();
 
                 //Remove files from project that do not exist
-                foreach (XmlNode itemGroup in doc.DocumentElement.GetElementsByTagName("ItemGroup"))
+                foreach (ItemGroup itemGroup in projectFile)
                 {
-                    foreach (XmlNode node in itemGroup)
+                    foreach (var rule in project.Rules)
                     {
-                        var linkNode = node.FirstChild;
+                        string pattern = RegexFormat(rule.OutputPattern);
 
-                        if (linkNode == null || linkNode.Name != "Link")
-                            continue;
-
-                        var includeNode = node.Attributes["Include"];
-                        if (includeNode == null)
-                            continue;
-                        string relativePath = includeNode.Value;
-
-                        foreach (var rule in project.Rules)
+                        if (Regex.IsMatch(itemGroup.Link, "^" + pattern, RegexOptions.IgnoreCase))
                         {
-                            string pattern = RegexFormat(rule.OutputPattern);
-
-                            if (Regex.IsMatch(linkNode.InnerText, "^" + pattern, RegexOptions.IgnoreCase))
+                            string fullPath = Path.Combine(Path.GetDirectoryName(projectPath), itemGroup.Include);
+                            if (File.Exists(fullPath) && (string.IsNullOrEmpty(rule.ExcludePattern) || !Regex.IsMatch(itemGroup.Include, rule.ExcludePattern, RegexOptions.IgnoreCase)))
                             {
-                                string fullPath = Path.Combine(Path.GetDirectoryName(projectPath), relativePath);
-                                if (File.Exists(fullPath) && (string.IsNullOrEmpty(rule.ExcludePattern) || !Regex.IsMatch(relativePath, rule.ExcludePattern, RegexOptions.IgnoreCase)))
+                                List<string> list;
+                                if (!existing.TryGetValue(project, out list))
                                 {
-                                    List<string> list;
-                                    if (!existing.TryGetValue(project, out list))
-                                    {
-                                        existing[project] =
-                                            list = new List<string>();
-                                    }
-
-                                    //Use ToUpper() to account for weird casing issues
-                                    list.Add(relativePath.ToUpperInvariant());
+                                    existing[project] =
+                                        list = new List<string>();
                                 }
-                                else
-                                {
-                                    if (removeCallback != null)
-                                        removeCallback(project, Path.GetFileName(relativePath));
 
-                                    if (!options.DryRun)
-                                    {
-                                        //We have to add a lambda to the list so it can be removed after the for-each loop
-                                        var temp = node;
-                                        var tempGroup = itemGroup;
-                                        removeNodes.Add(() =>
-                                        {
-                                            temp.ParentNode.RemoveChild(temp);
-                                            if (tempGroup.ChildNodes.Count == 0)
-                                                tempGroup.ParentNode.RemoveChild(tempGroup);
-                                        });
-                                    }
+                                //Use ToUpper() to account for weird casing issues
+                                list.Add(itemGroup.Include.ToUpperInvariant());
+                            }
+                            else
+                            {
+                                if (removeCallback != null)
+                                    removeCallback(project, Path.GetFileName(itemGroup.Include));
+
+                                if (!options.DryRun)
+                                {
+                                    //We have to add a lambda to the list so it can be removed after the for-each loop
+                                    var temp = itemGroup;
+                                    removeNodes.Add(() => projectFile.Remove(temp));
                                 }
                             }
                         }
@@ -141,19 +123,12 @@ namespace ProjectLinky
 
                             if (!options.DryRun)
                             {
-                                var itemGroup = doc.CreateElement("ItemGroup", doc.DocumentElement.NamespaceURI);
-
-                                var content = doc.CreateElement(rule.BuildAction, doc.DocumentElement.NamespaceURI);
-                                content.SetAttribute("Include", relativePath);
-                                itemGroup.AppendChild(content);
-
-                                var link = doc.CreateElement("Link", doc.DocumentElement.NamespaceURI);
-                                link.InnerText = Path.Combine(rule.OutputPattern, Path.GetFileName(fullPath));
-                                content.AppendChild(link);
-
-                                doc.DocumentElement.AppendChild(itemGroup);
-
-                                needsSave = true;
+                                projectFile.Append(new ItemGroup
+                                {
+                                    Include = relativePath,
+                                    Link = Path.Combine(rule.OutputPattern, Path.GetFileName(fullPath)),
+                                    BuildAction = rule.BuildAction,
+                                });
                             }
                         }
                     }
@@ -161,7 +136,7 @@ namespace ProjectLinky
 
                 if (!options.DryRun && needsSave)
                 {
-                    doc.Save(projectPath);
+                    projectFile.Save(projectPath);
                 }
             }
         }

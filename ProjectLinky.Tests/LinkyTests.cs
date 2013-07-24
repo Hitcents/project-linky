@@ -12,11 +12,52 @@ namespace ProjectLinky.Tests
     public class LinkyTests
     {
         private Options _options;
+        private Mocking.MockProjectFile _projectFile;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _options = new Options();
+            _projectFile = new Mocking.MockProjectFile();
+            _projectFile.ItemGroups = new Dictionary<string, List<ItemGroup>>
+            {
+                {   
+                    "iOS.csproj", 
+                    new List<ItemGroup>
+                    {
+                        new ItemGroup { Include = @"Images\chuck.png", Link = @"Content\Images\chuck.png", BuildAction = "Content" },
+                        new ItemGroup { Include = @"Images\garbage.png", Link = @"Content\Images\garbage.png", BuildAction = "Content" },
+                    }
+                },
+                {   
+                    @"Code\iOS.csproj", 
+                    new List<ItemGroup>
+                    {
+                        new ItemGroup { Include = @"..\Images\chuck.png", Link = @"Content\Images\chuck.png", BuildAction = "Content" },
+                        new ItemGroup { Include = @"..\Images\garbage.png", Link = @"Content\Images\garbage.png", BuildAction = "Content" },
+                    }
+                },
+
+
+                {   
+                    "Android.csproj", 
+                    new List<ItemGroup>
+                    {
+                        new ItemGroup { Include = @"Images\chuck.png", Link = @"Assets\Images\chuck.png", BuildAction = "AndroidAsset" },
+                        new ItemGroup { Include = @"Images\garbage.png", Link = @"Assets\Images\garbage.png", BuildAction = "AndroidAsset" },
+                    }
+                },
+                {   
+                    @"Code\Android.csproj", 
+                    new List<ItemGroup>
+                    {
+                        new ItemGroup { Include = @"..\Images\chuck.png", Link = @"Assets\Images\chuck.png", BuildAction = "AndroidAsset" },
+                        new ItemGroup { Include = @"..\Images\garbage.png", Link = @"Assets\Images\garbage.png", BuildAction = "AndroidAsset" },
+                    }
+                },
+            };
+
+            Linky.GetProjectFile = () => _projectFile;
         }
 
         [TestMethod]
@@ -52,8 +93,6 @@ namespace ProjectLinky.Tests
         }
 
         [TestMethod,        
-            DeploymentItem("Data\\Android.csproj"),
-            DeploymentItem("Data\\iOS.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images")]
         public void ParseConfig()
         {
@@ -70,8 +109,6 @@ namespace ProjectLinky.Tests
         }
 
         [TestMethod,
-            DeploymentItem("Data\\Android.csproj"),
-            DeploymentItem("Data\\iOS.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images")]
         public void RemoveItemGroup()
         {
@@ -88,7 +125,6 @@ namespace ProjectLinky.Tests
         }
 
         [TestMethod,
-            DeploymentItem("Data\\iOS.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveiOS()
@@ -107,11 +143,10 @@ namespace ProjectLinky.Tests
                 };
             });
 
-            Approvals.VerifyFile("iOS.csproj");
+            Approvals.VerifyAll(_projectFile.ItemGroups["iOS.csproj"], "ItemGroup");
         }
 
         [TestMethod,
-            DeploymentItem("Data\\Android.csproj"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveAndroid()
@@ -130,11 +165,10 @@ namespace ProjectLinky.Tests
                 };
             });
 
-            Approvals.VerifyFile("Android.csproj");
+            Approvals.VerifyAll(_projectFile.ItemGroups["Android.csproj"], "ItemGroup");
         }
 
         [TestMethod,
-            DeploymentItem("Data\\Code\\iOS.csproj", "Code"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveiOSSubdirectory()
@@ -153,11 +187,10 @@ namespace ProjectLinky.Tests
                 };
             });
 
-            Approvals.VerifyFile("Code\\iOS.csproj");
+            Approvals.VerifyAll(_projectFile.ItemGroups["iOS.csproj"], "ItemGroup");
         }
 
         [TestMethod,
-            DeploymentItem("Data\\Code\\Android.csproj", "Code"),
             DeploymentItem("Data\\Images\\chuck.png", "Images"),
             DeploymentItem("Data\\Images\\nerd.png", "Images")]
         public void ApproveAndroidSubDirectory()
@@ -176,7 +209,7 @@ namespace ProjectLinky.Tests
                 };
             });
 
-            Approvals.VerifyFile("Code\\Android.csproj");
+            Approvals.VerifyAll(_projectFile.ItemGroups["Android.csproj"], "ItemGroup");
         }
     }
 }

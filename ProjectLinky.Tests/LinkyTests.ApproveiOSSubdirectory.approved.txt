@@ -1,0 +1,2 @@
+﻿ItemGroup[0] = Link: Content\Images\chuck.png Include: Images\chuck.png BuildAction: Content
+ItemGroup[1] = Link: Content\Images\garbage.png Include: Images\garbage.png BuildAction: Content
